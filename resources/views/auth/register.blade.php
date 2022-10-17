@@ -8,7 +8,9 @@
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
-
+            <div class="felx justify-center items-center">
+                <h1 style="font-family: Norican,sans-serif" class="text-2xl  md:text-5xl">Instgram Hasoub</h1>
+            </div>
             <div>
                 <x-jet-label for="name" value="{{ __('Name') }}" />
                 <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required

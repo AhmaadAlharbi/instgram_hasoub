@@ -14,7 +14,7 @@
                                 class="border border-sloid border-gray-300 rounded-md py-0 px-5 mr-16 whitespace-nowrap">
                                 Edit Profile
                             </a>
-                            <a href="">
+                            <a href="/posts/create">
                                 <x-jet-button class="ml-8 leading-none whitespace-nowrap">
                                     {{__('Add post')}}
                                 </x-jet-button>
@@ -23,7 +23,8 @@
                         </div>
                         <div class="flex flex-col ">
                             <ul class="flex flex-row mb-5">
-                                <li class="mr-10 cursor-pointer"><span class="font-semibold">15</span>Posts</li>
+                                <li class="mr-10 cursor-pointer"><span
+                                        class="font-semibold mr-2">{{$profile->posts->count()}}</span>Posts</li>
                                 <li class="mr-10 cursor-pointer"><span class="font-semibold">33</span>followers</li>
                                 <li class="mr-10 cursor-pointer"><span class="font-semibold">40</span>following</li>
                             </ul>
@@ -38,22 +39,13 @@
 
         </header>
     </x-slot>
-
-    {{-- <div class="py-12">--}}
-        {{-- <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">--}}
-            {{-- <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">--}}
-                {{--
-                <x-jet-welcome />--}}
-                {{--
-            </div>--}}
-            {{-- </div>--}}
-        {{-- </div>--}}
     <div class="max-w-4xl my-0 mx-auto">
         <hr class="mb-10">
         <div class="grid grid-cols-3 gap-8 mx-0 mt-0 mb-6">
+            @foreach($posts as $post)
             <div class="post">
                 <a href="" class="w-full h-full">
-                    <img src="{{asset('networking.png')}}" class="w-full h-full object-cover" alt="">
+                    <img src="/storage/{{$post->image_path}}" class="w-full h-full object-cover" alt="">
                     <div class="post-info">
                         <ul>
                             <li class="inline-block font-semibold mr-7 ">
@@ -68,91 +60,8 @@
                     </div>
                 </a>
             </div>
-            <div class="post">
-                <a href="" class="w-full h-full">
-                    <img src="{{asset('networking.png')}}" class="w-full h-full object-cover" alt="">
-                    <div class="post-info">
-                        <ul>
-                            <li class="inline-block font-semibold mr-7 ">
-                                <span class="absolute h-1 w-1 overflow-hidden ">Likes:</span>
-                                <i class="fas fa-heart" aria-hidden="true"></i>33
-                            </li>
-                            <li class="inline-block font-semibold mr-7  ">
-                                <span class="absolute h-1 w-1 overflow-hidden">Comments:</span>
-                                <i class="fas fa-comment" aria-hidden="true"></i>3333
-                            </li>
-                        </ul>
-                    </div>
-                </a>
-            </div>
-            <div class="post">
-                <a href="" class="w-full h-full">
-                    <img src="{{asset('networking.png')}}" class="w-full h-full object-cover" alt="">
-                    <div class="post-info">
-                        <ul>
-                            <li class="inline-block font-semibold mr-7 ">
-                                <span class="absolute h-1 w-1 overflow-hidden ">Likes:</span>
-                                <i class="fas fa-heart" aria-hidden="true"></i>33
-                            </li>
-                            <li class="inline-block font-semibold mr-7  ">
-                                <span class="absolute h-1 w-1 overflow-hidden">Comments:</span>
-                                <i class="fas fa-comment" aria-hidden="true"></i>3333
-                            </li>
-                        </ul>
-                    </div>
-                </a>
-            </div>
-            <div class="post">
-                <a href="" class="w-full h-full">
-                    <img src="{{asset('networking.png')}}" class="w-full h-full object-cover" alt="">
-                    <div class="post-info">
-                        <ul>
-                            <li class="inline-block font-semibold mr-7 ">
-                                <span class="absolute h-1 w-1 overflow-hidden ">Likes:</span>
-                                <i class="fas fa-heart" aria-hidden="true"></i>33
-                            </li>
-                            <li class="inline-block font-semibold mr-7  ">
-                                <span class="absolute h-1 w-1 overflow-hidden">Comments:</span>
-                                <i class="fas fa-comment" aria-hidden="true"></i>3333
-                            </li>
-                        </ul>
-                    </div>
-                </a>
-            </div>
-            <div class="post">
-                <a href="" class="w-full h-full">
-                    <img src="{{asset('networking.png')}}" class="w-full h-full object-cover" alt="">
-                    <div class="post-info">
-                        <ul>
-                            <li class="inline-block font-semibold mr-7 ">
-                                <span class="absolute h-1 w-1 overflow-hidden ">Likes:</span>
-                                <i class="fas fa-heart" aria-hidden="true"></i>33
-                            </li>
-                            <li class="inline-block font-semibold mr-7  ">
-                                <span class="absolute h-1 w-1 overflow-hidden">Comments:</span>
-                                <i class="fas fa-comment" aria-hidden="true"></i>3333
-                            </li>
-                        </ul>
-                    </div>
-                </a>
-            </div>
-            <div class="post">
-                <a href="" class="w-full h-full">
-                    <img src="{{asset('networking.png')}}" class="w-full h-full object-cover" alt="">
-                    <div class="post-info">
-                        <ul>
-                            <li class="inline-block font-semibold mr-7 ">
-                                <span class="absolute h-1 w-1 overflow-hidden ">Likes:</span>
-                                <i class="fas fa-heart" aria-hidden="true"></i>33
-                            </li>
-                            <li class="inline-block font-semibold mr-7  ">
-                                <span class="absolute h-1 w-1 overflow-hidden">Comments:</span>
-                                <i class="fas fa-comment" aria-hidden="true"></i>3333
-                            </li>
-                        </ul>
-                    </div>
-                </a>
-            </div>
+            @endforeach
+
 
         </div>
     </div>

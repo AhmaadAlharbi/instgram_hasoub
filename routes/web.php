@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -24,15 +25,18 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-       return redirect()->route('user_profile',['username'=>auth()->user()->username]);
+        return redirect()->route('user_profile', ['username' => auth()->user()->username]);
     })->name('dashboard');
 });
 
 
-Route::get('{username}',function($username){
-    $user = User::where('username',$username)->first();
-    if($user == null){
+Route::get('{username}', function ($username) {
+    $user = User::where('username', $username)->first();
+    $posts = $user->posts;
+    if ($user == null) {
         abort(403);
     }
-    return view('profile',['profile'=>$user]);
+    return view('profile', ['profile' => $user, 'posts' => $posts]);
 })->name('user_profile');
+
+Route::resource('posts', PostController::class);

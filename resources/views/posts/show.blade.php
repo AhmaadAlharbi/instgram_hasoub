@@ -12,14 +12,28 @@
                 </div>
                 <div class="col-span-2 bg-white flex flex-col">
                     <div class="flex p-3 border-b border-solid border-gray-300 item-center justify-between">
-                        <div class="flex items-center ">
+                        <div class="flex justify-center items-center ">
                             <img src="{{$post->user->profile_photo_url}}" alt="{{$post->user->username}}"
                                 class="rounded-full h-10 w-10 mr-3">
                             <a href="/{{$post->user->username}}">{{$post->user->username}}</a>
                         </div>
+                        @if(auth()->user()->id == $post->user_id)
+                        <a href="/posts/{{$post->id}}/edit"
+                            class="rounded-lg shadow px-4 py-2  bg-gray-900 text-white"><i class="fas fa-edit"></i></a>
+                        <form action="{{route('posts.destroy',$post->id)}}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button class="rounded-lg shadow px-4 py-2  bg-red-600 text-white" type="submit"
+                                onclick="return confirm('Are you sure you want to delete this post?')">
+                                <i class="fa fa-trash"></i></button>
+                        </form>
+
+                        @else
                         <div>
-                            <button class="bg-blue-500 rounded-lg shadow px-2 py-1 text-white">Follow</button>
+                            <button class="bg-blue-500 rounded-lg shadow px-4 py-2 text-white">Follow</button>
                         </div>
+                        @endif
+
 
                     </div>
                     <div class="border-b border-solid border-gray-300 h-full">

@@ -30,6 +30,7 @@ class User extends Authenticatable
         'bio',
         'url',
         'password',
+        'profile_photo_path',
     ];
 
     /**
@@ -64,5 +65,9 @@ class User extends Authenticatable
     public function posts()
     {
         return $this->hasMany(Post::class)->orderBy('created_at', 'DESC');
+    }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }

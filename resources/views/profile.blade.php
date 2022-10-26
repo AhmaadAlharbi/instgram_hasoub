@@ -54,7 +54,7 @@
                             </li>
                             <li class="inline-block font-semibold mr-7  ">
                                 <span class="absolute h-1 w-1 overflow-hidden">Comments:</span>
-                                <i class="fas fa-comment" aria-hidden="true"></i>3333
+                                <i class="fas fa-comment" aria-hidden="true"></i>{{$post->comments()->count()}}
                             </li>
                         </ul>
                     </div>

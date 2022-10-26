@@ -73,6 +73,20 @@
     @stack('modals')
 
     @livewireScripts
+    <script>
+        let img = document.getElementById('postImage');
+        let sec1 = document.getElementById('sec1');
+        let sec3 = document.getElementById('sec3');
+        let sec4 = document.getElementById('sec4');
+        if(img!=null){
+            let imgheight = img.offsetHeight;
+            let sec1Height = sec1.offsetHeight;
+            let sec3Height = sec3.offsetHeight;
+            let sec4Height = sec4.offsetHeight;
+            let height = imgheight - (sec1Height + sec3Height + sec4Height);
+            document.getElementById('commentArea').style.maxHeight = height.toString()+'px';
+        }
+    </script>
 </body>
 
 </html>

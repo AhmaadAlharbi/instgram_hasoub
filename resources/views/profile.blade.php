@@ -44,7 +44,7 @@
         <div class="grid grid-cols-3 gap-8 mx-0 mt-0 mb-6">
             @foreach($posts as $post)
             <div class="post">
-                <a href="" class="w-full h-full">
+                <a href="/posts/{{$post->id}}" class="w-full h-full">
                     <img src="/storage/{{$post->image_path}}" class="w-full h-full object-cover" alt="">
                     <div class="post-info">
                         <ul>

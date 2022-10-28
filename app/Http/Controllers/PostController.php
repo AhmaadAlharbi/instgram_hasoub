@@ -74,6 +74,8 @@ class PostController extends Controller
         if ($post == null) {
             abort(403);
         }
+        $this->authorize('update', $post);
+
         return view('posts.edit', compact('post'));
     }
 
@@ -89,6 +91,7 @@ class PostController extends Controller
         if ($post == null) {
             abort(404);
         }
+        $this->authorize('update', $post);
         $data = request()->validate([
             'post_caption' => 'string',
             'image_path' => ['image', 'nullable']

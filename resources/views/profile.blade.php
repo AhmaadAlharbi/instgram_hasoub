@@ -3,15 +3,14 @@
         <header>
             <div class="grid grid-cols-5 gap-4">
                 <div class="col-start-2 col-span-1 flex justify-center w-auto mt-5">
-                    <img src="{{$profile->profile_photo_url}}" class="w-40 h-40 rounded-full"
-                        alt="{{$profile->username}}">
+                    <img src="{{$profile->profile_photo_url}}" class="w-40 h-40 rounded-full" alt="{{$profile->username}}">
                 </div>
                 <div class="col-start-3 col-span-2 flex items-center w-auto mt-0">
                     <div class="grid grid-rows-2">
                         <div class="flex items-center">
                             <h1 class="font-light text-3xl mr-14">{{$profile->username}}</h1>
-                            <a href="{{route('profile.show')}}"
-                                class="border border-sloid border-gray-300 rounded-md py-0 px-5 mr-16 whitespace-nowrap">
+                            @if(Auth::user()!= null && Auth::user()->name == $profile->name)
+                            <a href="{{route('profile.show')}}" class="border border-sloid border-gray-300 rounded-md py-0 px-5 mr-16 whitespace-nowrap">
                                 Edit Profile
                             </a>
                             <a href="/posts/create">
@@ -19,12 +18,13 @@
                                     {{__('Add post')}}
                                 </x-jet-button>
                             </a>
-
+                            @else
+                            <button class="bg-blue-500 rounded-lg shadow px-2 py-1 text-white">Follow</button>
+                            @endif
                         </div>
                         <div class="flex flex-col ">
                             <ul class="flex flex-row mb-5">
-                                <li class="mr-10 cursor-pointer"><span
-                                        class="font-semibold mr-2">{{$profile->posts->count()}}</span>Posts</li>
+                                <li class="mr-10 cursor-pointer"><span class="font-semibold mr-2">{{$profile->posts->count()}}</span>Posts</li>
                                 <li class="mr-10 cursor-pointer"><span class="font-semibold">33</span>followers</li>
                                 <li class="mr-10 cursor-pointer"><span class="font-semibold">40</span>following</li>
                             </ul>
@@ -50,7 +50,7 @@
                         <ul>
                             <li class="inline-block font-semibold mr-7 ">
                                 <span class="absolute h-1 w-1 overflow-hidden ">Likes:</span>
-                                <i class="fas fa-heart" aria-hidden="true"></i>33
+                                <i class="fas fa-heart" aria-hidden="true"></i> {{$post->likedByUsers->count()}}
                             </li>
                             <li class="inline-block font-semibold mr-7  ">
                                 <span class="absolute h-1 w-1 overflow-hidden">Comments:</span>

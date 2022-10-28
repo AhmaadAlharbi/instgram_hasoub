@@ -72,6 +72,8 @@ class CommentController extends Controller
         if ($comment == null) {
             abort(404);
         }
+        $this->authorize('update', $comment);
+
         return view('comments.edit', compact('comment'));
     }
 
@@ -87,6 +89,8 @@ class CommentController extends Controller
         if ($comment == null) {
             abort(404);
         }
+        $this->authorize('update', $comment);
+
         $data = request()->validate([
             'comment' => ['required', 'string', 'max:255'],
         ]);
@@ -107,6 +111,8 @@ class CommentController extends Controller
         if ($comment == null) {
             abort(404);
         }
+        $this->authorize('delete', $comment);
+
         $comment->delete();
         return back();
     }

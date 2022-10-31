@@ -27,7 +27,7 @@
                         @endcan
                         @cannot('update',$post)
                         <div>
-                            <button class="bg-blue-500 rounded-lg shadow px-4 py-2 text-white">Follow</button>
+                            @livewire('follow-button',['profile_id'=>$post->user->id],key($post->user->id))
                         </div>
                         @endcannot
 

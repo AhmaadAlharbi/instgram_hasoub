@@ -25,6 +25,7 @@ class FollowButton extends Component
             auth()->user()->follows()->toggle($this->profile);
             // $this->profile->followers()->toggle(auth()->user);
             auth()->user()->following($this->profile) ? $this->following = "Unfollow" : $this->following = "Follow";
+            auth()->user()->setAccepted($this->profile);
         } else {
             redirect(route('login'));
         }

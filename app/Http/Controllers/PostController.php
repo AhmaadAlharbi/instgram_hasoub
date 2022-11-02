@@ -60,6 +60,9 @@ class PostController extends Controller
         if ($post == null) {
             abort(404);
         }
+        if (auth()->user() != null || $post->user->status == 'private') {
+            $this->authorize('view', $post);
+        }
         return view('posts.show', ['post' => $post]);
     }
 

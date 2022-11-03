@@ -92,7 +92,7 @@ class User extends Authenticatable
             DB::table('follows')
                 ->where('user_id', $this->id)
                 ->where('following_user_id', $user->id)
-                ->updated([
+                ->update([
                     'accepted' => true,
                 ]);
         }
@@ -139,5 +139,23 @@ class User extends Authenticatable
             ->update([
                 'accepted' => $state
             ]);
+    }
+
+    public function home()
+    {
+        $ids = $this->follows()->where('accepted', true)->get()->pluck('id');
+        return Post::whereIn('user_id', $ids)->latest()->get();
+    }
+    public function iFollow()
+    {
+        return $this->follows()->where('user_id', $this->id)->where('accepted', true)->latest()->get();
+    }
+    public function otherUsers()
+    {
+        $ifollow = $this->iFollow()->pluck('id')->toArray();
+        $pendingFollow = $this->pendingFollowReq()->pluck('id')->toArray();
+        array_push($ifollow, $this->id);
+        $others = array_merge($ifollow, $pendingFollow);
+        return User::whereNotIn('id', $others)->latest()->get();
     }
 }

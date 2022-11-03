@@ -6,7 +6,7 @@
             <!-- Logo -->
 
             <div class="shrink-0 flex items-center">
-                <a href="#">
+                <a href="{{route('home')}}">
                     <div>
                         <h1 style="font-family: Norican,sans-serif;" class="text-5xl">{{__('Instgram')}}</h1>
                     </div>
@@ -22,7 +22,7 @@
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <div class="">
-                    <a href="#" class="text-2xl mx-2 text-gray-700">
+                    <a href="{{route('home')}}" class="text-2xl mx-2 text-gray-700">
                         <i class="fas fa-home mr-3"></i>
                     </a>
                     <a href="#" class="text-2xl mx-2 text-gray-700">
@@ -183,8 +183,8 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+            <x-jet-responsive-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
+                {{ __('home') }}
             </x-jet-responsive-nav-link>
         </div>
 

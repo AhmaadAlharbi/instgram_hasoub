@@ -13,6 +13,13 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    public function __construct()
+    {
+        $this->middleware(['auth:sanctum', 'verified'])->except('[show]');
+    }
+
     public function index()
     {
         abort(404);

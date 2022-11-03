@@ -29,6 +29,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         return view('home', ['posts' => auth()->user()->home(), 'profile' => $profile, 'iFollow' => $iFollow, 'toFollow' => $toFollow]);
     })->name('home');
 
+    Route::get('/explore', function () {
+        return view('explore', ['profile' => auth()->user(), 'posts' => auth()->user()->explore()]);
+    })->name('explore');
     Route::get('/followers', function () {
         return view('followers', ['profile' => auth()->user(), 'followers' => auth()->user()->followers()->get()]);
     })->name('followers');

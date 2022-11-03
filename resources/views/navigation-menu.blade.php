@@ -14,7 +14,7 @@
             </div>
             @if(Auth::check())
             <div>
-                <input type="search" placeholder="search..." class="border border-gray-300 border-solid text-center">
+                @livewire('search')
             </div>
 
             <!-- Navigation Links -->
@@ -25,7 +25,7 @@
                     <a href="{{route('home')}}" class="text-2xl mx-2 text-gray-700">
                         <i class="fas fa-home mr-3"></i>
                     </a>
-                    <a href="#" class="text-2xl mx-2 text-gray-700">
+                    <a href="{{route('explore')}}" class="text-2xl mx-2 text-gray-700">
                         <i class="fas fa-compass mr-3"></i>
                     </a>
                     <a href="{{route('inbox')}}" class="text-2xl mx-2 text-gray-700">

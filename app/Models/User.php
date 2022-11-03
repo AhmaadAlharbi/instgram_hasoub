@@ -131,4 +131,13 @@ class User extends Authenticatable
     {
         return $this->follows()->where('following_user_id', $user->id)->where('accepted', true)->exists();
     }
+    public function toggleAccepted(User $user, $state)
+    {
+        return DB::table('follows')
+            ->where('user_id', $user->id)
+            ->where('following_user_id', $this->id)
+            ->update([
+                'accepted' => $state
+            ]);
+    }
 }

@@ -18,6 +18,9 @@
                         </div>
 
                     </div>
+                    @if($profile->status == 'private')
+                    @livewire('accept-follow',['profile_id'=>$req->id],key($req->username))
+                    @endif
                     @livewire('follow-button',['profile_id'=>$req->id],key($req->id))
 
                 </div>

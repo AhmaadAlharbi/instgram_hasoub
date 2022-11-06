@@ -48,12 +48,13 @@ class PostController extends Controller
             'image_path' => ['required', 'image'],
         ]);
         $imagePath = request('image_path')->store('uploads', 'public');
-        Post::create([
-            'user_id' => auth()->user()->id,
-            'post_caption' => $data['post_caption'],
-            'image_path' => $imagePath
-        ]);
-        return redirect()->route('user_profile', ['username' => auth()->user()->username]);
+        // Post::create([
+        //     'user_id' => auth()->user()->id,
+        //     'post_caption' => $data['post_caption'],
+        //     'image_path' => $imagePath
+        // ]);
+        // return redirect()->route('user_profile', ['username' => auth()->user()->username]);
+        return view('applyFilters', ['post_caption' => $data['post_caption'], 'image_path' => $imagePath]);
     }
 
     /**

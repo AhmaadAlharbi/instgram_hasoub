@@ -23,6 +23,9 @@
                 </div>
             </div>
             @endforeach
+            <div class="col-span-3 mt-10">
+                {{$following->links()}}
+            </div>
             @else
             <div class="my-10 text-center">
                 <p>{{__('Nothing to view')}}</p>

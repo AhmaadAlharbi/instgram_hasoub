@@ -23,6 +23,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'username' => ['required', 'string', 'max:255', Rule::unique('users')->ignore($user->id)],
             'bio' => ['required', 'string', 'max:255'],
             'url' => ['nullable', 'url', 'max:255'],
+            'language' => ['in:ar,en'],
             'status' => ['in:public,private'],
             'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
             'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
@@ -43,6 +44,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'username' => $input['username'],
                 'bio' => $input['bio'],
                 'url' => $input['url'],
+                'language' => $input['language'],
                 'status' => $input['status'],
                 'email' => $input['email'],
             ])->save();
@@ -63,6 +65,8 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'username' => $input['username'],
             'bio' => $input['bio'],
             'url' => $input['url'],
+            'language' => $input['language'],
+
             'status' => $input['status'],
 
             'email' => $input['email'],

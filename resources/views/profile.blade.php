@@ -9,14 +9,14 @@
                 <div class="col-start-3 col-span-2 flex items-center w-auto mt-0">
                     <div class="grid grid-rows-2">
                         <div class="flex items-center">
-                            <h1 class="font-light text-3xl mr-14">{{$profile->username}}</h1>
+                            <h1 class="font-light text-3xl me-14">{{$profile->username}}</h1>
                             @if(Auth::user()!= null && Auth::user()->name == $profile->name)
                             <a href="{{route('profile.show')}}"
-                                class="border border-sloid border-gray-300 rounded-md py-0 px-5 mr-16 whitespace-nowrap">
+                                class="border border-sloid border-gray-300 rounded-md py-0 px-5 me-16 whitespace-nowrap">
                                 Edit Profile
                             </a>
                             <a href="/posts/create">
-                                <x-jet-button class="ml-8 leading-none whitespace-nowrap">
+                                <x-jet-button class="ms-8 leading-none whitespace-nowrap">
                                     {{__('Add post')}}
                                 </x-jet-button>
                             </a>
@@ -26,13 +26,13 @@
                         </div>
                         <div class="flex flex-col ">
                             <ul class="flex flex-row mb-5">
-                                <li class="mr-10 cursor-pointer"><span
-                                        class="font-semibold mr-2">{{$profile->posts->count()}}</span>Posts</li>
-                                <li class="mr-10 cursor-pointer"><a href="{{route('followers')}}"><span
+                                <li class="me-10 cursor-pointer"><span
+                                        class="font-semibold me-2">{{$profile->posts->count()}}</span>Posts</li>
+                                <li class="me-10 cursor-pointer"><a href="{{route('followers')}}"><span
                                             class="font-semibold">{{$profile->followers()->count()}}
                                         </span>followers</a>
                                 </li>
-                                <li class="mr-10 cursor-pointer"><a href="{{route('following')}}"><span
+                                <li class="me-10 cursor-pointer"><a href="{{route('following')}}"><span
                                             class="font-semibold">{{$profile->follows()->count()}}
                                         </span>following</a>
                                 </li>
@@ -58,11 +58,11 @@
                     <img src="/storage/{{$post->image_path}}" class="w-full h-full object-cover" alt="">
                     <div class="post-info">
                         <ul>
-                            <li class="inline-block font-semibold mr-7 ">
+                            <li class="inline-block font-semibold me-7 ">
                                 <span class="absolute h-1 w-1 overflow-hidden ">Likes:</span>
                                 <i class="fas fa-heart" aria-hidden="true"></i> {{$post->likedByUsers->count()}}
                             </li>
-                            <li class="inline-block font-semibold mr-7  ">
+                            <li class="inline-block font-semibold me-7  ">
                                 <span class="absolute h-1 w-1 overflow-hidden">Comments:</span>
                                 <i class="fas fa-comment" aria-hidden="true"></i>{{$post->comments()->count()}}
                             </li>
@@ -71,7 +71,9 @@
                 </a>
             </div>
             @endforeach
-
+            <div class="col-span-3 mt-10">
+                {{$posts->links()}}
+            </div>
 
         </div>
         @else
@@ -83,11 +85,11 @@
                     <img src="/storage/{{$post->image_path}}" class="w-full h-full object-cover" alt="">
                     <div class="post-info">
                         <ul>
-                            <li class="inline-block font-semibold mr-7 ">
+                            <li class="inline-block font-semibold me-7 ">
                                 <span class="absolute h-1 w-1 overflow-hidden ">Likes:</span>
                                 <i class="fas fa-heart" aria-hidden="true"></i> {{$post->likedByUsers->count()}}
                             </li>
-                            <li class="inline-block font-semibold mr-7  ">
+                            <li class="inline-block font-semibold me-7  ">
                                 <span class="absolute h-1 w-1 overflow-hidden">Comments:</span>
                                 <i class="fas fa-comment" aria-hidden="true"></i>{{$post->comments()->count()}}
                             </li>
@@ -96,6 +98,9 @@
                 </a>
             </div>
             @endforeach
+            <div class="col-span-3 mt-10">
+                {{$posts->links()}}
+            </div>
 
 
         </div>

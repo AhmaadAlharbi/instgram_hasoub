@@ -26,6 +26,9 @@
                 </div>
             </div>
             @endforeach
+            <div class="col-span-3 mt-10">
+                {{$requests->links()}}
+            </div>
             @else
             <div class="my-10 text-center">
                 <p>{{__('Nothing to view')}}</p>
@@ -53,6 +56,9 @@
                 </div>
             </div>
             @endforeach
+            <div class="col-span-3 mt-10">
+                {{$pendings->links()}}
+            </div>
             @endif
         </div>
     </div>

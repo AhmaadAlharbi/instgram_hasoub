@@ -9,9 +9,11 @@
         </div>
 
         @if(str_contains(url()->current(),'login'))
-            <div class="w-full sm:max-w-md mt-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg flex justify-center items-center ">
-                <div class="text-sm text-gray-600 pr-5">{{__('Do not have an account')}} <a href="{{route('register')}}" class="text-blue-700 hover:text-blue-900 text-base font-bold mx-2">{{__('Sign up')}}</a></div>
-            </div>
+        <div
+            class="w-full sm:max-w-md mt-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg flex justify-center items-center ">
+            <div class="text-sm text-gray-600 pe-5">{{__('Do not have an account')}} <a href="{{route('register')}}"
+                    class="text-blue-700 hover:text-blue-900 text-base font-bold mx-2">{{__('Sign up')}}</a></div>
+        </div>
         @endif
     </div>
 

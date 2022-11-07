@@ -8,11 +8,11 @@
                     <img src="/storage/{{$post->image_path}}" class="w-full h-full object-cover" alt="">
                     <div class="post-info">
                         <ul>
-                            <li class="inline-block font-semibold mr-7 ">
+                            <li class="inline-block font-semibold me-7 ">
                                 <span class="absolute h-1 w-1 overflow-hidden ">Likes:</span>
                                 <i class="fas fa-heart" aria-hidden="true"></i> {{$post->likedByUsers->count()}}
                             </li>
-                            <li class="inline-block font-semibold mr-7  ">
+                            <li class="inline-block font-semibold me-7  ">
                                 <span class="absolute h-1 w-1 overflow-hidden">Comments:</span>
                                 <i class="fas fa-comment" aria-hidden="true"></i>{{$post->comments()->count()}}
                             </li>
@@ -21,6 +21,9 @@
                 </a>
             </div>
             @endforeach
+            <div class="col-span-3 mt-10">
+                {{$posts->links()}}
+            </div>
         </div>
     </div>
 </x-app-layout>

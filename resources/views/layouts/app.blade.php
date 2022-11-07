@@ -46,12 +46,20 @@
         .post-info {
             display: none;
         }
+
+        .rtl {
+            direction: rtl;
+        }
+
+        .ltr {
+            direction: ltr;
+        }
     </style>
     <!-- Styles -->
     @livewireStyles
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased {{isset ($rtl) ? 'rtl' : 'ltr' }}">
     <x-jet-banner />
 
     <div class="min-h-screen bg-gray-100">
@@ -85,6 +93,12 @@
             let sec4Height = sec4.offsetHeight;
             let height = imgheight - (sec1Height + sec3Height + sec4Height);
             document.getElementById('commentArea').style.maxHeight = height.toString()+'px';
+        }
+
+        function copyToClipboard(id){
+            var postlink = document.getElementById(id);
+            navigator.clipboard.writeText(postlink.value);
+            alert('the shareable link' +postlink.value)
         }
     </script>
 </body>

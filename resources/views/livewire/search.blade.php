@@ -7,7 +7,7 @@
         @foreach($results as $profile)
         <li class="flex items-center justify-between my-1">
             <a href="/{{$profile['username']}}" class="font-bold text-blue-500 hover:underline">
-                <img src="{{$profile['profile_photo_url']}}" alt="" class="rounded-full w-10 h-10 mr-24">
+                <img src="{{$profile['profile_photo_url']}}" alt="" class="rounded-full w-10 h-10 me-24">
             </a>
             <span>
                 <a class="font-bold text-blue-500 hover:underline"

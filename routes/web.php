@@ -33,11 +33,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         return view('explore', ['profile' => auth()->user(), 'posts' => auth()->user()->explore()]);
     })->name('explore');
     Route::get('/followers', function () {
-        return view('followers', ['profile' => auth()->user(), 'followers' => auth()->user()->followers()->get()]);
+        return view('followers', ['profile' => auth()->user(), 'followers' => auth()->user()->followers()->paginate(7)]);
     })->name('followers');
 
     Route::get('/following', function () {
-        return view('following', ['profile' => auth()->user(), 'following' => auth()->user()->follows()->get()]);
+        return view('following', ['profile' => auth()->user(), 'following' => auth()->user()->follows()->paginate(7)]);
     })->name('following');
     Route::get('/inbox', function () {
         $user = auth()->user();
@@ -64,8 +64,16 @@ Route::get('{username}', function ($username) {
     if ($user == null) {
         abort(403);
     }
-    $posts = $user->posts;
+    $posts = $user->posts()->paginate(5);
     return view('profile', ['profile' => $user, 'posts' => $posts]);
-})->name('user_profile');
+})->name('user_profile')->middleware('language');
 
-Route::resource('posts', PostController::class);
+Route::resource('posts', PostController::class)->middleware('language');
+Route::get('setlang/{language}', function ($lang) {
+    if ($lang == 'ar' || $lang == 'en') {
+        session(['language' => $lang]);
+    } else {
+        abort(404);
+    }
+    return redirect()->back();
+});

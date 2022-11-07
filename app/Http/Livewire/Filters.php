@@ -28,18 +28,18 @@ class Filters extends Component
         $this->post_caption = $post_caption;
         $this->image_path = $image_path;
         $this->correctImageOrientation($this->image_path, IMG_FILTER_NEGATE, $this->filter1, null, null, null, null, 0);
-        $this->correctImageOrientation($this->image_path, IMG_FILTER_NEGATE, $this->filter2, null, null, null, null, 0);
-        $this->correctImageOrientation($this->image_path, IMG_FILTER_NEGATE, $this->filter3, null, null, null, null, 0);
-        $this->correctImageOrientation($this->image_path, IMG_FILTER_NEGATE, $this->filter4, null, null, null, null, 0);
-        $this->correctImageOrientation($this->image_path, IMG_FILTER_NEGATE, $this->filter5, null, null, null, null, 0);
-        $this->correctImageOrientation($this->image_path, IMG_FILTER_NEGATE, $this->filter6, null, null, null, null, 0);
-        $this->correctImageOrientation($this->image_path, IMG_FILTER_NEGATE, $this->filter7, null, null, null, null, 0);
-        $this->correctImageOrientation($this->image_path, IMG_FILTER_NEGATE, $this->filter8, 100, 50, 0, null, 3);
-        $this->correctImageOrientation($this->image_path, IMG_FILTER_NEGATE, $this->filter9, 20, null, null, null, 1);
-        $this->correctImageOrientation($this->image_path, IMG_FILTER_NEGATE, $this->filter10, 80, null, null, null, 1);
-        $this->correctImageOrientation($this->image_path, IMG_FILTER_NEGATE, $this->filter11, 20, null, null, null, 1);
-        $this->correctImageOrientation($this->image_path, IMG_FILTER_NEGATE, $this->filter12, 50, null, null, null, 2);
-        $this->correctImageOrientation($this->image_path, IMG_FILTER_NEGATE, $this->filter13, 80, null, null, null, 1);
+        $this->correctImageOrientation($this->image_path, IMG_FILTER_GRAYSCALE, $this->filter2, null, null, null, null, 0);
+        $this->correctImageOrientation($this->image_path, IMG_FILTER_EMBOSS, $this->filter3, null, null, null, null, 0);
+        $this->correctImageOrientation($this->image_path, IMG_FILTER_GAUSSIAN_BLUR, $this->filter4, null, null, null, null, 0);
+        $this->correctImageOrientation($this->image_path, IMG_FILTER_EDGEDETECT, $this->filter5, null, null, null, null, 0);
+        $this->correctImageOrientation($this->image_path, IMG_FILTER_SELECTIVE_BLUR, $this->filter6, null, null, null, null, 0);
+        $this->correctImageOrientation($this->image_path, IMG_FILTER_MEAN_REMOVAL, $this->filter7, null, null, null, null, 0);
+        $this->correctImageOrientation($this->image_path, IMG_FILTER_COLORIZE, $this->filter8, 100, 50, 0, null, 3);
+        $this->correctImageOrientation($this->image_path, IMG_FILTER_CONTRAST, $this->filter9, 20, null, null, null, 1);
+        $this->correctImageOrientation($this->image_path, IMG_FILTER_SMOOTH, $this->filter10, 80, null, null, null, 1);
+        $this->correctImageOrientation($this->image_path, IMG_FILTER_SMOOTH, $this->filter11, 20, null, null, null, 1);
+        $this->correctImageOrientation($this->image_path, IMG_FILTER_PIXELATE, $this->filter12, 50, true, null, null, 2);
+        $this->correctImageOrientation($this->image_path, IMG_FILTER_CONTRAST, $this->filter13, 80, null, null, null, 1);
     }
 
     public function applyFilter($num)
